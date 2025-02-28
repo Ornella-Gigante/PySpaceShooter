@@ -40,6 +40,7 @@ ship = pygame.image.load(os.path.join('images','ship.png'))
 
 ship_x = WIDTH/2 - 50
 ship_y = HEIGHT/2 - 50
+ship_angle = 0
 
 # FUNCTION FOR ROTATING IMAGE
  
@@ -63,7 +64,7 @@ def draw(canvas):
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
-    canvas.blit(ship, (ship_x, ship_y))
+    canvas.blit(rot_center(ship,ship_angle), (ship_x, ship_y))
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
