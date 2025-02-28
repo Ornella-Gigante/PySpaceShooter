@@ -36,6 +36,23 @@ bg = pygame.image.load(os.path.join('images', 'bg.jpg'))
 debris = pygame.image.load(os.path.join('images','debris2_brown.png'))
 ship = pygame.image.load(os.path.join('images','ship.png'))
 
+# CREATING VALUES FOR COORDINATES IN CASE OF FUTURE CHANGES 
+
+ship_x = WIDTH/2 - 50
+ship_y = HEIGHT/2 - 50
+
+# FUNCTION FOR ROTATING IMAGE
+ 
+def rot_center(image, angle):
+
+    orig_rect = image.get_rect()
+    rot_image = pygame.transform.rotate(image, angle)
+    rot_rect = orig_rect.copy()
+    rot_rect.center = rot_image.get_rect().center 
+    rot_image = rot_image.subsurface(rot_rect).copy()
+    return rot_image
+
+
 
 # FUNCTIONS TO DRAW GAME ELEMENTS 
 
@@ -46,7 +63,7 @@ def draw(canvas):
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
-    canvas.blit(ship, (WIDTH/2 - 50, HEIGHT/2 - 50))
+    canvas.blit(ship, (ship_x, ship_y))
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
