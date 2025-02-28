@@ -5,7 +5,7 @@
 
 A modern twist on the classic arcade space shooter! Navigate through asteroid fields, blast space rocks, and survive as long as possible in this Pygame-powered adventure.
 
-![Gameplay Screenshot](screenshots/gameplay.gif) <!-- Need to add the screenshot-->
+![Gameplay Screenshot](https://github.com/Ornella-Gigante/PySpaceShooter/blob/main/image_game.png) 
 
 ## 🌟 Features
 - 🕹️ 360° spaceship rotation & thrust mechanics
