@@ -34,6 +34,7 @@ pygame.display.set_caption('==👾Asteroids Game👾==')
 
 bg = pygame.image.load(os.path.join('images', 'bg.jpg'))
 debris = pygame.image.load(os.path.join('images','debris2_brown.png'))
+ship = pygame.image.load(os.path.join('images','ship.png'))
 
 
 # FUNCTIONS TO DRAW GAME ELEMENTS 
@@ -45,6 +46,7 @@ def draw(canvas):
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
+    canvas.blit(ship, (WIDTH/2, HEIGHT/2))
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
