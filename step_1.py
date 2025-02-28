@@ -32,6 +32,27 @@ pygame.display.set_caption('Asteroids')
 bg = pygame.image.load(os.path.join('images', 'bg.jpg'))
 debris = pygame.image.load(os.path.join('images','debris2_brown.png'))
 
+
+# DRAW GAME FUNCTION
+
+def draw(canvas):
+    canvas.fill(BLACK)
+    canvas.blit(bg,(0,0))
+    canvas.blit(debris(time*3,0))
+    canvas.blit(debris,(time*.3-WIDTH,0))
+
+# HANDLE INPUT FUNCTION 
+
+def handle_input():
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+
+def update_screen():
+    pygame.display.update()
+    fps.tick(60)
+    
 # ASTEROIDS GAME LOOP
 
 while True: 
