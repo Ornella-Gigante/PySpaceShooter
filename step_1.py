@@ -46,7 +46,7 @@ def draw(canvas):
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
-    canvas.blit(ship, (WIDTH/2, HEIGHT/2))
+    canvas.blit(ship, (WIDTH/2 - 50, HEIGHT/2 - 50))
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
