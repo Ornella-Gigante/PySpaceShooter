@@ -87,5 +87,6 @@ Open to space enthusiasts! Submit PRs for:
         
         +Space-themed emoji storytelling 🌌
 
-Would you like me to enhance any specific section or create additional documentation elements? 🚀
-Made with 💜 and ☕ 
+# Would you like me to enhance any specific section or create additional documentation elements? 🚀
+
+# Made with 💜 and ☕ 
