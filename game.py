@@ -68,6 +68,7 @@ def draw(canvas):
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
+    global ship_angle
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
