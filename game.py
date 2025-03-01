@@ -42,8 +42,10 @@ ship_x = WIDTH/2 - 50
 ship_y = HEIGHT/2 - 50
 ship_angle = 0
 ship_is_rotating = False
+ship_is_forward = False 
 ship_direction = 0
 ship_speed = 10 
+
 
 # FUNCTION FOR ROTATING IMAGE
  
@@ -70,8 +72,9 @@ def draw(canvas):
     canvas.blit(rot_center(ship,ship_angle), (ship_x, ship_y))
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
+
 def handle_input():
-    global ship_is_rotating, ship_angle, ship_direction, ship_speed
+    global ship_is_rotating, ship_angle, ship_direction, ship_speed, ship_is_forward, ship_x, ship_y
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -83,15 +86,31 @@ def handle_input():
             elif event.key == K_RIGHT:
                 ship_is_rotating = True 
                 ship_direction = 1
+            elif event.key == K_UP:
+                ship_is_forward = True
+                ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
+                ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
+
         elif event.type== KEYUP:
-            ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
-            ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
+            ship_is_rotating = False 
+            ship_is_forward = False 
+        
+        print(ship_angle)
+            
 
     if ship_is_rotating:
         if ship_direction == 0: 
             ship_angle = ship_angle - 10 
         else: 
             ship_angle = ship_angle + 10
+
+
+    if ship_is_forward:
+        ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
+        ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
+
+
+    
 
 # FUNCTION TO UPDATE THE SCREEN 
 
