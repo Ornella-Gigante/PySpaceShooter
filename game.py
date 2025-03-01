@@ -75,7 +75,9 @@ def handle_input():
             sys.exit()
         elif event.type == KEYDOWN:
             if event.key == K_LEFT:
-                ship_angle = ship_angle + 1 
+                ship_angle = ship_angle + 10
+            elif event.key == K_RIGHT:
+                ship_angle = ship_angle - 10
 
 # FUNCTION TO UPDATE THE SCREEN 
 
