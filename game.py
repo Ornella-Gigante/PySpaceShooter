@@ -38,10 +38,14 @@ ship = pygame.image.load(os.path.join('images','ship.png'))
 ship_thrusted = pygame.image.load(os.path.join('images','ship_thrusted.png'))
 asteroid = pygame.image.load(os.path.join('images','asteroid.png'))
 
-# VARIABLES OF THE ASTEROID COORDINATES
+# VARIABLES OF THE ASTEROID COORDINATES IN A LIST 
 
-asteroid_x = random.randint(0, WIDTH)
-asteroid_y = random.randint(0,HEIGHT)
+asteroid_x = [] #random.randint(0, WIDTH)
+asteroid_y = [] #random.randint(0,HEIGHT)
+
+for i in range(0,10):
+    asteroid_x.append(random.randint(0,WIDTH))
+    asteroid_y.append(random.randint(0, HEIGHT))
 
 
 # CREATING VALUES FOR COORDINATES IN CASE OF FUTURE CHANGES 
@@ -78,7 +82,9 @@ def draw(canvas):
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
-    canvas.blit(rot_center(asteroid,time),(asteroid_x,asteroid_y))
+
+    for i in range(0,10):
+        canvas.blit(rot_center(asteroid,time),(asteroid_x[i],asteroid_y[i]))
 
     if ship_is_forward:
         canvas.blit(rot_center(ship_thrusted,ship_angle), (ship_x, ship_y))
