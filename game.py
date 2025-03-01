@@ -42,6 +42,7 @@ asteroid = pygame.image.load(os.path.join('images','asteroid.png'))
 
 asteroid_x = [] #random.randint(0, WIDTH)
 asteroid_y = [] #random.randint(0,HEIGHT)
+no_asteroids =  5
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
@@ -83,7 +84,7 @@ def draw(canvas):
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
 
-    for i in range(0,10):
+    for i in range(0,no_asteroids):
         canvas.blit(rot_center(asteroid,time),(asteroid_x[i],asteroid_y[i]))
 
     if ship_is_forward:
