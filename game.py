@@ -92,8 +92,10 @@ def handle_input():
                 ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
 
         elif event.type== KEYUP:
-            ship_is_rotating = False 
-            ship_is_forward = False 
+            if event.key == K_LEFT or event.key == K_RIGHT:
+                ship_is_rotating = False 
+            else: 
+                ship_is_forward = False 
         
         print(ship_angle)
             
