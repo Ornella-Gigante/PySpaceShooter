@@ -82,6 +82,8 @@ def handle_input():
             elif event.key == K_RIGHT:
                 ship_is_rotating = True 
                 ship_direction = 1
+        elif event.type== KEYUP:
+            ship_is_rotating =False 
 
     if ship_is_rotating:
         if ship_direction == 0: 
