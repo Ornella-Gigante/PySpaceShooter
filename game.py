@@ -41,6 +41,8 @@ ship = pygame.image.load(os.path.join('images','ship.png'))
 ship_x = WIDTH/2 - 50
 ship_y = HEIGHT/2 - 50
 ship_angle = 0
+ship_is_rotating = False
+ship_direction = 0
 
 # FUNCTION FOR ROTATING IMAGE
  
@@ -68,16 +70,24 @@ def draw(canvas):
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
-    global ship_angle
+    global ship_is_rotating, ship_angle, ship_direction
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == KEYDOWN:
             if event.key == K_LEFT:
-                ship_angle = ship_angle + 10
+                ship_is_rotating = True
+                ship_direction = 0
             elif event.key == K_RIGHT:
-                ship_angle = ship_angle - 10
+                ship_is_rotating = True 
+                ship_direction = 1
+
+    if ship_is_rotating:
+        if ship_direction == 0: 
+            ship_angle = ship_angle - 10 
+        else: 
+            ship_angle = ship_angle + 10
 
 # FUNCTION TO UPDATE THE SCREEN 
 
