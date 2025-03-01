@@ -43,6 +43,7 @@ ship_y = HEIGHT/2 - 50
 ship_angle = 0
 ship_is_rotating = False
 ship_direction = 0
+ship_speed = 10 
 
 # FUNCTION FOR ROTATING IMAGE
  
@@ -70,7 +71,7 @@ def draw(canvas):
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 def handle_input():
-    global ship_is_rotating, ship_angle, ship_direction
+    global ship_is_rotating, ship_angle, ship_direction, ship_speed
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -83,8 +84,8 @@ def handle_input():
                 ship_is_rotating = True 
                 ship_direction = 1
         elif event.type== KEYUP:
-            ship_x = (ship_x + math.cos(math.radians(ship_angle)))
-            ship_y = (ship_y + -math.sin(math.radians(ship_angle)))
+            ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
+            ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
 
     if ship_is_rotating:
         if ship_direction == 0: 
