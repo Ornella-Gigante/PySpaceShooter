@@ -83,7 +83,8 @@ def handle_input():
                 ship_is_rotating = True 
                 ship_direction = 1
         elif event.type== KEYUP:
-            ship_is_rotating =False 
+            ship_x = (ship_x + math.cos(math.radians(ship_angle)))
+            ship_y = (ship_y + -math.sin(math.radians(ship_angle)))
 
     if ship_is_rotating:
         if ship_direction == 0: 
