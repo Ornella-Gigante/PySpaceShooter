@@ -44,7 +44,7 @@ ship_angle = 0
 ship_is_rotating = False
 ship_is_forward = False 
 ship_direction = 0
-ship_speed = 10 
+ship_speed = 0
 
 
 # FUNCTION FOR ROTATING IMAGE
@@ -88,8 +88,7 @@ def handle_input():
                 ship_direction = 1
             elif event.key == K_UP:
                 ship_is_forward = True
-                ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
-                ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
+                ship_speed = 10
 
         elif event.type== KEYUP:
             if event.key == K_LEFT or event.key == K_RIGHT:
@@ -107,9 +106,11 @@ def handle_input():
             ship_angle = ship_angle + 10
 
 
-    if ship_is_forward:
+    if ship_is_forward or ship_speed > 0:
         ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
         ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
+        if ship_is_forward == False: 
+            ship_speed = ship_speed - 0.2
 
 
     
