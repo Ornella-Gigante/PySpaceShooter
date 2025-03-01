@@ -72,6 +72,9 @@ def handle_input():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        elif event.type == KEYDOWN:
+            if event.key == K_LEFT:
+                ship_angle = ship_angle + 1 
 
 # FUNCTION TO UPDATE THE SCREEN 
 
