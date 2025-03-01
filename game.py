@@ -36,6 +36,7 @@ bg = pygame.image.load(os.path.join('images', 'bg.jpg'))
 debris = pygame.image.load(os.path.join('images','debris2_brown.png'))
 ship = pygame.image.load(os.path.join('images','ship.png'))
 ship_thrusted = pygame.image.load(os.path.join('images','ship_thrusted.png'))
+asteroid = pygame.image.load(os.path.join('images','asteroid.jpg'))
 
 
 # CREATING VALUES FOR COORDINATES IN CASE OF FUTURE CHANGES 
