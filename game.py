@@ -44,10 +44,6 @@ asteroid_x = [] #random.randint(0, WIDTH)
 asteroid_y = [] #random.randint(0,HEIGHT)
 no_asteroids =  5
 
-for i in range(0,10):
-    asteroid_x.append(random.randint(0,WIDTH))
-    asteroid_y.append(random.randint(0, HEIGHT))
-
 
 # CREATING VALUES FOR COORDINATES IN CASE OF FUTURE CHANGES 
 
@@ -60,6 +56,13 @@ ship_direction = 0
 ship_speed = 0
 asteroid_angle = []
 asteroid_speed = 10
+
+for i in range(0,10):
+    asteroid_x.append(random.randint(0,WIDTH))
+    asteroid_y.append(random.randint(0, HEIGHT))
+    asteroid_angle.append(random.randit(0,365))
+
+
 
 
 # FUNCTION FOR ROTATING IMAGE
@@ -149,8 +152,8 @@ def update_screen():
 
 def game_logic():
     for i in range(0,no_asteroids):
-        asteroid_x[i] = (asteroid_x + math.cos(math.radians(asteroid_angle)) * asteroid_speed)
-        asteroid_y[i] = (asteroid_y + -math.sin(math.radians(asteroid_angle)) * asteroid_speed)
+        asteroid_x[i] = (asteroid_x[i] + math.cos(math.radians(asteroid_angle[i])) * asteroid_speed)
+        asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
         
 
     
