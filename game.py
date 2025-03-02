@@ -163,5 +163,5 @@ def game_logic():
 while True: 
     draw(window)
     handle_input()
-    # game_logic() 
+    game_logic() 
     update_screen()
