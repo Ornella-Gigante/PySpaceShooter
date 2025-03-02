@@ -58,8 +58,8 @@ ship_is_rotating = False
 ship_is_forward = False 
 ship_direction = 0
 ship_speed = 0
-asteroid_angle = 90
-asteroid_speed = 5
+asteroid_angle = []
+asteroid_speed = 10
 
 
 # FUNCTION FOR ROTATING IMAGE
@@ -151,6 +151,7 @@ def game_logic():
     for i in range(0,no_asteroids):
         asteroid_x[i] = (asteroid_x + math.cos(math.radians(asteroid_angle)) * asteroid_speed)
         asteroid_y[i] = (asteroid_y + -math.sin(math.radians(asteroid_angle)) * asteroid_speed)
+        
 
     
 
