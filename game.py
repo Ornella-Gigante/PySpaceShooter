@@ -60,7 +60,7 @@ asteroid_speed = 10
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
     asteroid_y.append(random.randint(0, HEIGHT))
-    asteroid_angle.append(random.randit(0,365))
+    asteroid_angle.append(random.randint(0,365))
 
 
 
