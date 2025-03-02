@@ -58,6 +58,8 @@ ship_is_rotating = False
 ship_is_forward = False 
 ship_direction = 0
 ship_speed = 0
+asteroid_angle = 90
+asteroid_speed = 5
 
 
 # FUNCTION FOR ROTATING IMAGE
@@ -134,7 +136,6 @@ def handle_input():
         if ship_is_forward == False: 
             ship_speed = ship_speed - 0.2
 
-
     
 
 # FUNCTION TO UPDATE THE SCREEN 
@@ -142,6 +143,15 @@ def handle_input():
 def update_screen():
     pygame.display.update()
     fps.tick(60) 
+
+
+# FUNCTION FOR MOVING ASTEROIDS 
+
+def game_logic():
+    for i in range(0,no_asteroids):
+        asteroid_x[i] = (asteroid_x + math.cos(math.radians(asteroid_angle)) * asteroid_speed)
+        asteroid_y[i] = (asteroid_y + -math.cos(math.radians(asteroid_angle)) * asteroid_speed)
+
     
 
 # ASTEROIDS GAME LOOP
