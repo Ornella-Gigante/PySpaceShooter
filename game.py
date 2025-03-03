@@ -156,6 +156,14 @@ def game_logic():
         asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
         
 
+# FUNCTION FOR ASTEROID BOUNDARIES ON SCREEN 
+
+if asteroid_y[i] < 0:
+    asteroid_y[i] = HEIGHT
+
+if asteroid_y[i] > HEIGHT:
+    asteroid_y[i] = 0
+
     
 
 # ASTEROIDS GAME LOOP
