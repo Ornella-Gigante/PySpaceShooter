@@ -168,6 +168,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 # FUNCTION FOR MOVING ASTEROIDS 
 
 def game_logic():
+    global game_over
     for i in range(0,no_asteroids):
         asteroid_x[i] = (asteroid_x[i] + math.cos(math.radians(asteroid_angle[i])) * asteroid_speed)
         asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
@@ -189,8 +190,7 @@ def game_logic():
             asteroid_x[i] = 0
 
         if isCollision(ship_x,ship_y, asteroid_x[i], asteroid_y[i]):
-            print('Game Over!')
-            exit()
+            game_over = True
 
 # ASTEROIDS GAME LOOP
 
