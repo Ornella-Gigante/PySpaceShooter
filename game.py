@@ -171,6 +171,10 @@ def game_logic():
         if asteroid_x[i] > WIDTH:
             asteroid_x[i] = 0
 
+        if isCollision(ship_x,ship_y, asteroid_x[i], asteroid_y[i]):
+            print('Game Over!')
+            exit()
+
 # ASTEROIDS GAME LOOP
 
 while True: 
