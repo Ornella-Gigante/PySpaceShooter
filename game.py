@@ -56,6 +56,7 @@ ship_direction = 0
 ship_speed = 0
 asteroid_angle = []
 asteroid_speed = 2
+game_over = False
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
