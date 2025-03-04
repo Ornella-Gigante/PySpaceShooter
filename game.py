@@ -82,8 +82,8 @@ def rot_center(image, angle):
 # FUNCTIONS TO DRAW GAME ELEMENTS 
 
 def draw(canvas):
-    global time
-    global ship_is_forward
+    global time, ship_is_forward, game_over
+
     canvas.fill(BLACK)
     canvas.blit(bg,(0,0))
     canvas.blit(debris,(time*.3,0))
@@ -97,6 +97,12 @@ def draw(canvas):
         canvas.blit(rot_center(ship_thrusted,ship_angle), (ship_x, ship_y))
     else:
         canvas.blit(rot_center(ship,ship_angle), (ship_x, ship_y))
+
+    if game_over:
+        font = pygame.font.Font(None, 74)
+        text = font.render("GAME OVER", True, RED)
+        text_rect = text.get_rect(center=(WIDTH/2, HEIGHT/2))
+        canvas.blit(text, text_rect)
 
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
