@@ -196,6 +196,25 @@ def game_logic():
 
 while True: 
     draw(window)
-    handle_input()
-    game_logic() 
+    if not game_over:
+        handle_input()
+        game_logic() 
+    else:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == KEYDOWN:
+                if event.key == K_SPACE:
+                    # Reset the game
+                    game_over = False
+                    ship_x = WIDTH/2 - 50
+                    ship_y = HEIGHT/2 - 50
+                    ship_angle = 0
+                    ship_speed = 0
+                    for i in range(0, no_asteroids):
+                        asteroid_x[i] = random.randint(0, WIDTH)
+                        asteroid_y[i] = random.randint(0, HEIGHT)
+                        asteroid_angle[i] = random.randint(0, 365)
     update_screen()
+    
