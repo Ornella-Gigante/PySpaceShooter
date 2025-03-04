@@ -58,6 +58,9 @@ ship_speed = 0
 asteroid_angle = []
 asteroid_speed = 2
 game_over = False
+bullet_x = 0 
+bullet_y = 0 
+bullet_angle = 0 
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
@@ -83,7 +86,7 @@ def rot_center(image, angle):
 # FUNCTIONS TO DRAW GAME ELEMENTS 
 
 def draw(canvas):
-    global time, ship_is_forward, game_over
+    global time, ship_is_forward, game_over, shot
 
     canvas.fill(BLACK)
     canvas.blit(bg,(0,0))
