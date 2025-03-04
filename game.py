@@ -86,7 +86,7 @@ def rot_center(image, angle):
 # FUNCTIONS TO DRAW GAME ELEMENTS 
 
 def draw(canvas):
-    global time, ship_is_forward, game_over, shot
+    global time, ship_is_forward, game_over, shot, bullet_y, bullet_x, bullet_angle
 
     canvas.fill(BLACK)
     canvas.blit(bg,(0,0))
