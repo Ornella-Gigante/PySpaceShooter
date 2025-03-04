@@ -61,6 +61,7 @@ game_over = False
 bullet_x = 0 
 bullet_y = 0 
 bullet_angle = 0 
+bullets = [] # List to store active bullets
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
@@ -102,6 +103,10 @@ def draw(canvas):
         canvas.blit(rot_center(ship_thrusted,ship_angle), (ship_x, ship_y))
     else:
         canvas.blit(rot_center(ship,ship_angle), (ship_x, ship_y))
+
+     # Draw bullets
+    for bullet in bullets:
+        canvas.blit(rot_center(shot, bullet["angle"]), (bullet["x"], bullet["y"]))
 
     if game_over:
         font = pygame.font.Font(None, 74)
