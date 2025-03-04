@@ -93,7 +93,6 @@ def draw(canvas):
     canvas.blit(bg,(0,0))
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
-    canvas.blit(shot, (bullet_x,bullet_y))
     time =time + 1
 
     for i in range(0,no_asteroids):
@@ -133,11 +132,18 @@ def handle_input():
             elif event.key == K_UP:
                 ship_is_forward = True
                 ship_speed = 10
+
             elif event.key == K_SPACE:
-                bullet_x = ship_x 
-                bullet_y = ship_y
-                bullet_angle = ship_angle
-                print(f" x {bullet_x} y{bullet_y} ")
+                bullet_offset = 5 # Ajusta este valor según el tamaño de tu nave
+                bullets.append({
+                    "x": ship_x + math.cos(math.radians(ship_angle)) * bullet_offset,
+                    "y": ship_y  + - math.sin(math.radians(ship_angle)) * bullet_offset,
+                    "angle": ship_angle,
+                    "speed": 10
+                })
+
+    
+            print(f" x {bullet_x} y {bullet_y} ")
 
         elif event.type== KEYUP:
             if event.key == K_LEFT or event.key == K_RIGHT:
@@ -200,8 +206,8 @@ def game_logic():
     for i in range(0,no_asteroids):
         asteroid_x[i] = (asteroid_x[i] + math.cos(math.radians(asteroid_angle[i])) * asteroid_speed)
         asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
-        # bullet_x = (bullet_x + math.cos(math.radians(bullet_angle))* ship_speed)
-        # bullet_y = (bullet_y + - math.sin(math.radians(bullet_angle))* ship_speed)
+        #bullet_x = (bullet_x + math.cos(math.radians(bullet_angle))* ship_speed)
+        #bullet_y = (bullet_y + - math.sin(math.radians(bullet_angle))* ship_speed)
         
 
         # FUNCTION FOR ASTEROID BOUNDARIES ON SCREEN (y,x)
@@ -229,6 +235,7 @@ while True:
     if not game_over:
         handle_input()
         game_logic() 
+        update_bullets()
     else:
         for event in pygame.event.get():
             if event.type == QUIT:
