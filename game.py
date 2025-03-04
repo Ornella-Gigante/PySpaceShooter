@@ -113,7 +113,7 @@ def draw(canvas):
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 
 def handle_input():
-    global ship_is_rotating, ship_angle, ship_direction, ship_speed, ship_is_forward, ship_x, ship_y
+    global ship_is_rotating, ship_angle, ship_direction, ship_speed, ship_is_forward, ship_x, ship_y, bullet_y, bullet_x, bullet_angle
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -128,6 +128,10 @@ def handle_input():
             elif event.key == K_UP:
                 ship_is_forward = True
                 ship_speed = 10
+            elif event.key == K_SPACE:
+                bullet_x = ship_x 
+                bullet_y = ship_y
+                bullet_angle = ship_angle
 
         elif event.type== KEYUP:
             if event.key == K_LEFT or event.key == K_RIGHT:
