@@ -89,6 +89,7 @@ def draw(canvas):
     canvas.blit(bg,(0,0))
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
+    canvas.blit(shot, (0,0))
     time =time + 1
 
     for i in range(0,no_asteroids):
