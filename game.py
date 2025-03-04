@@ -92,7 +92,7 @@ def draw(canvas):
     canvas.blit(bg,(0,0))
     canvas.blit(debris,(time*.3,0))
     canvas.blit(debris,(time*.3-WIDTH,0))
-    canvas.blit(shot, (0,0))
+    canvas.blit(shot, (bullet_x,bullet_y))
     time =time + 1
 
     for i in range(0,no_asteroids):
@@ -132,6 +132,7 @@ def handle_input():
                 bullet_x = ship_x 
                 bullet_y = ship_y
                 bullet_angle = ship_angle
+                print(f" x {bullet_x} y{bullet_y} ")
 
         elif event.type== KEYUP:
             if event.key == K_LEFT or event.key == K_RIGHT:
@@ -139,7 +140,7 @@ def handle_input():
             else: 
                 ship_is_forward = False 
         
-        print(ship_angle)
+      
             
 
     if ship_is_rotating:
@@ -178,9 +179,12 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 def game_logic():
     global game_over
+    global bullet_y, bullet_x, bullet_angle
     for i in range(0,no_asteroids):
         asteroid_x[i] = (asteroid_x[i] + math.cos(math.radians(asteroid_angle[i])) * asteroid_speed)
         asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
+        # bullet_x = (bullet_x + math.cos(math.radians(bullet_angle))* ship_speed)
+        # bullet_y = (bullet_y + - math.sin(math.radians(bullet_angle))* ship_speed)
         
 
         # FUNCTION FOR ASTEROID BOUNDARIES ON SCREEN (y,x)
