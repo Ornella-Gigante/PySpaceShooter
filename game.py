@@ -38,12 +38,24 @@ ship = pygame.image.load(os.path.join('images','ship.png'))
 ship_thrusted = pygame.image.load(os.path.join('images','ship_thrusted.png'))
 asteroid = pygame.image.load(os.path.join('images','asteroid.png'))
 shot = pygame.image.load(os.path.join('images','shot2.png'))
+explosion = pygame.image.load(os.path.join('images', 'explosion_blue.png'))
 
 # VARIABLES OF THE ASTEROID COORDINATES IN A LIST 
 
 asteroid_x = [] #random.randint(0, WIDTH)
 asteroid_y = [] #random.randint(0,HEIGHT)
 no_asteroids =  5
+
+# LOAD SOUNDS
+missile_sound = pygame.mixer.Sound(os.path.join('sounds', 'missile.ogg'))
+missile_sound.set_volume(1)
+thruster_sound = pygame.mixer.Sound(os.path.join('sounds', 'thrust.ogg'))
+thruster_sound.set_volume(1)
+explosion_sound = pygame.mixer.Sound(os.path.join('sounds', 'explosion.ogg'))
+explosion_sound.set_volume(1)
+pygame.mixer.music.load(os.path.join('sounds', 'game.ogg'))
+pygame.mixer.music.set_volume(0.3)
+pygame.mixer.music.play(-1)
 
 
 # CREATING VALUES FOR COORDINATES IN CASE OF FUTURE CHANGES 
