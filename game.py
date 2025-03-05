@@ -134,10 +134,12 @@ def handle_input():
                 ship_speed = 10
 
             elif event.key == K_SPACE:
-                bullet_offset = 5 # Ajusta este valor según el tamaño de tu nave
+                ship_center_x = ship_x + ship.get_width() / 2
+                ship_center_y = ship_y + ship.get_height() / 2
+                bullet_offset = 20  # Adjust this value to position the bullet in front of the ship
                 bullets.append({
-                    "x": ship_x + math.cos(math.radians(ship_angle)) * bullet_offset,
-                    "y": ship_y  + - math.sin(math.radians(ship_angle)) * bullet_offset,
+                    "x": ship_center_x + math.cos(math.radians(ship_angle)) * bullet_offset,
+                    "y": ship_center_y - math.sin(math.radians(ship_angle)) * bullet_offset,
                     "angle": ship_angle,
                     "speed": 10
                 })
