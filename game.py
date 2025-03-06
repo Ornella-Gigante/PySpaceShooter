@@ -141,6 +141,24 @@ def draw(canvas):
         text_rect = text.get_rect(center=(WIDTH/2, HEIGHT/2))
         canvas.blit(text, text_rect)
 
+           # Add instruction to restart
+        font_small = pygame.font.SysFont("Comic Sans MS", 30)
+        restart_text = font_small.render("Press SPACE to restart", True, WHITE)
+        restart_rect = restart_text.get_rect(center=(WIDTH/2, HEIGHT/2 + 80))
+        canvas.blit(restart_text, restart_rect)
+        
+    if victory:
+        font = pygame.font.SysFont("Comic Sans MS", 74)
+        text = font.render("YOU WIN!", True, GREEN)
+        text_rect = text.get_rect(center=(WIDTH/2, HEIGHT/2))
+        canvas.blit(text, text_rect)
+        
+        # Add instruction to restart
+        font_small = pygame.font.SysFont("Comic Sans MS", 30)
+        restart_text = font_small.render("Press SPACE to restart", True, WHITE)
+        restart_rect = restart_text.get_rect(center=(WIDTH/2, HEIGHT/2 + 80))
+        canvas.blit(restart_text, restart_rect)
+
 
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 
