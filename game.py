@@ -74,6 +74,7 @@ bullet_x = 0
 bullet_y = 0 
 bullet_angle = 0 
 bullets = [] # List to store active bullets
+score = 0 
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
@@ -118,6 +119,12 @@ def draw(canvas):
      # Draw bullets
     for bullet in bullets:
         canvas.blit(rot_center(shot, bullet["angle"]), (bullet["x"], bullet["y"]))
+
+     
+    # Draw Score
+    font = pygame.font.SysFont("Comic Sans MS", 40)
+    score_text = font.render(f"Score: {score}", True, (255, 255, 0))
+    canvas.blit(score_text, (50, 20))
 
     if game_over:
         font = pygame.font.Font(None, 74)
