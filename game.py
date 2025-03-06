@@ -41,6 +41,7 @@ asteroid = pygame.image.load(os.path.join('images','asteroid.png'))
 shot = pygame.image.load(os.path.join('images','shot2.png'))
 explosion = pygame.image.load(os.path.join('images', 'explosion_blue.png'))
 
+
 # VARIABLES OF THE ASTEROID COORDINATES IN A LIST 
 
 asteroid_x = [] #random.randint(0, WIDTH)
@@ -76,6 +77,7 @@ bullet_y = 0
 bullet_angle = 0 
 bullets = [] # List to store active bullets
 score = 0 
+victory = False 
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
@@ -101,7 +103,7 @@ def rot_center(image, angle):
 # FUNCTIONS TO DRAW GAME ELEMENTS 
 
 def draw(canvas):
-    global time, ship_is_forward, game_over, shot, bullet_y, bullet_x, bullet_angle
+    global time, ship_is_forward, game_over, shot, bullet_y, bullet_x, bullet_angle, score, victory
 
     canvas.fill(BLACK)
     canvas.blit(bg,(0,0))
@@ -109,13 +111,19 @@ def draw(canvas):
     canvas.blit(debris,(time*.3-WIDTH,0))
     time =time + 1
 
-    for i in range(0,no_asteroids):
-        canvas.blit(rot_center(asteroid,time),(asteroid_x[i],asteroid_y[i]))
+    # Draw bullets and asteroids only if not in victory or game over state
+    if not game_over and not victory:
+        for bullet in bullets:
+            canvas.blit(shot, (bullet['x'], bullet['y']))
 
-    if ship_is_forward:
-        canvas.blit(rot_center(ship_thrusted,ship_angle), (ship_x, ship_y))
-    else:
-        canvas.blit(rot_center(ship,ship_angle), (ship_x, ship_y))
+        for i in range(0,no_asteroids):
+            canvas.blit(rot_center(asteroid,time),(asteroid_x[i],asteroid_y[i]))
+
+        if ship_is_forward:
+            canvas.blit(rot_center(ship_thrusted,ship_angle), (ship_x, ship_y))
+        else:
+            canvas.blit(rot_center(ship,ship_angle), (ship_x, ship_y))
+
 
      # Draw bullets
     for bullet in bullets:
