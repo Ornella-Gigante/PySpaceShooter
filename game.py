@@ -217,7 +217,7 @@ def update_screen():
 
 def game_logic():
     global game_over
-    global bullet_y, bullet_x, bullet_angle
+    global bullet_y, bullet_x, bullet_angle, score
     for i in range(0,no_asteroids):
         asteroid_x[i] = (asteroid_x[i] + math.cos(math.radians(asteroid_angle[i])) * asteroid_speed)
         asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
