@@ -4,6 +4,7 @@ from pygame.locals import *
 
 # INIT GAME 
 
+pygame.mixer.pre_init()
 pygame.init()
 fps = pygame.time.Clock()
 
