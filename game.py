@@ -200,22 +200,17 @@ def update_bullets():
             bullets.remove(bullet)
 
 
+# FUNCTION OF COLLISION 
+
+def isCollision(x1, y1, x2, y2, distance):
+    return math.sqrt((x1 - x2)**2 + (y1 - y2)**2) < distance
+
 
 # FUNCTION TO UPDATE THE SCREEN 
 
 def update_screen():
     pygame.display.update()
     fps.tick(60) 
-
-
-# FUNCTION OF COLLISION 
-
-def isCollision(enemyX, enemyY, bulletX, bulletY):
-    distance = math.sqrt(math.pow(enemyX - bulletX, 2) + (math.pow(enemyY - bulletY, 2)))
-    if distance < 27: 
-        return True 
-    else:
-        return False 
 
 
 # FUNCTION FOR MOVING ASTEROIDS 
