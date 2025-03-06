@@ -240,9 +240,10 @@ def game_logic():
         if asteroid_x[i] > WIDTH:
             asteroid_x[i] = 0
 
-        if isCollision(ship_x,ship_y, asteroid_x[i], asteroid_y[i]):
+        if isCollision(ship_x + 25, ship_y + 25, asteroid_x[i] + 25, asteroid_y[i] + 25, 50):
             game_over = True
 
+   
 # ASTEROIDS GAME LOOP
 
 while True: 
