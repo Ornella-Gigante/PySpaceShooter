@@ -243,33 +243,24 @@ def update_screen():
 
 def game_logic():
     global game_over
-    global bullet_y, bullet_x, bullet_angle, score
+    global bullet_y, bullet_x, bullet_angle, score, victory
+
+    # Check for victory condition
+    if score >= 10:
+        victory = True
+        return
+
     for i in range(0,no_asteroids):
-        asteroid_x[i] = (asteroid_x[i] + math.cos(math.radians(asteroid_angle[i])) * asteroid_speed)
-        asteroid_y[i] = (asteroid_y[i] + -math.sin(math.radians(asteroid_angle[i])) * asteroid_speed)
-        #bullet_x = (bullet_x + math.cos(math.radians(bullet_angle))* ship_speed)
-        #bullet_y = (bullet_y + - math.sin(math.radians(bullet_angle))* ship_speed)
         
+        asteroid_x[i] += math.cos(math.radians(asteroid_angle[i])) * asteroid_speed
+        asteroid_y[i] -= math.sin(math.radians(asteroid_angle[i])) * asteroid_speed
 
-        # FUNCTION FOR ASTEROID BOUNDARIES ON SCREEN (y,x)
-
-        if asteroid_y[i] < 0:
-            asteroid_y[i] = HEIGHT
-
-        if asteroid_y[i] > HEIGHT:
-            asteroid_y[i] = 0
-
-            
-        if asteroid_x[i] < 0:
-            asteroid_x[i] = WIDTH
-
-        if asteroid_x[i] > WIDTH:
-            asteroid_x[i] = 0
+        asteroid_x[i] %= WIDTH
+        asteroid_y[i] %= HEIGHT
 
         if isCollision(ship_x + 25, ship_y + 25, asteroid_x[i] + 25, asteroid_y[i] + 25, 50):
             game_over = True
 
-        
     for bullet in bullets[:]:
         for i in range(no_asteroids):
             if isCollision(bullet['x'], bullet['y'], asteroid_x[i] + 25, asteroid_y[i] + 25, 25):
