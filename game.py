@@ -251,7 +251,7 @@ def game_logic():
         return
 
     for i in range(0,no_asteroids):
-        
+
         asteroid_x[i] += math.cos(math.radians(asteroid_angle[i])) * asteroid_speed
         asteroid_y[i] -= math.sin(math.radians(asteroid_angle[i])) * asteroid_speed
 
@@ -280,7 +280,7 @@ def update_screen():
 
 while True: 
     draw(window)
-    if not game_over:
+    if not game_over and not victory:
         handle_input()
         game_logic() 
         update_bullets()
@@ -293,6 +293,7 @@ while True:
                 if event.key == K_SPACE:
                     # Reset the game
                     game_over = False
+                    victory = False
                     ship_x = WIDTH/2 - 50
                     ship_y = HEIGHT/2 - 50
                     ship_angle = 0
