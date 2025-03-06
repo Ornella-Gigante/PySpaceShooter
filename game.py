@@ -243,6 +243,18 @@ def game_logic():
         if isCollision(ship_x + 25, ship_y + 25, asteroid_x[i] + 25, asteroid_y[i] + 25, 50):
             game_over = True
 
+        
+    for bullet in bullets[:]:
+        for i in range(no_asteroids):
+            if isCollision(bullet['x'], bullet['y'], asteroid_x[i] + 25, asteroid_y[i] + 25, 25):
+                asteroid_x[i] = random.randint(0, WIDTH)
+                asteroid_y[i] = random.randint(0, HEIGHT)
+                asteroid_angle[i] = random.randint(0, 365)
+                bullets.remove(bullet)
+                explosion_sound.play()
+                score += 1
+                break
+
    
 # ASTEROIDS GAME LOOP
 
