@@ -255,6 +255,9 @@ def game_logic():
                 score += 1
                 break
 
+def update_screen():
+    pygame.display.update()
+    fps.tick(60)
    
 # ASTEROIDS GAME LOOP
 
