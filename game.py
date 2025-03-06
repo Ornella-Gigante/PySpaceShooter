@@ -280,6 +280,8 @@ while True:
                     ship_y = HEIGHT/2 - 50
                     ship_angle = 0
                     ship_speed = 0
+                    bullets.clear()
+                    score = 0 
                     for i in range(0, no_asteroids):
                         asteroid_x[i] = random.randint(0, WIDTH)
                         asteroid_y[i] = random.randint(0, HEIGHT)
