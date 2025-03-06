@@ -193,14 +193,12 @@ def handle_input():
 # FUNCTION TO UPDATE BULLETS POSITION
 
 def update_bullets():
-    global bullets
-    for bullet in bullets[:]: # Iterate through a copy of the list to allow removal
-        bullet["x"] += math.cos(math.radians(bullet["angle"])) * bullet["speed"]
-        bullet["y"] += -math.sin(math.radians(bullet["angle"])) * bullet["speed"]
-
-        # Remove bullets that go off-screen
-        if bullet["x"] < 0 or bullet["x"] > WIDTH or bullet["y"] < 0 or bullet["y"] > HEIGHT:
+    for bullet in bullets[:]:
+        bullet['x'] += math.cos(math.radians(bullet['angle'])) * 10
+        bullet['y'] -= math.sin(math.radians(bullet['angle'])) * 10
+        if bullet['x'] < 0 or bullet['x'] > WIDTH or bullet['y'] < 0 or bullet['y'] > HEIGHT:
             bullets.remove(bullet)
+
 
 
 # FUNCTION TO UPDATE THE SCREEN 
