@@ -80,6 +80,8 @@ score = 0
 victory = False 
 ship_width = ship.get_width()
 ship_height = ship.get_height()
+victory_time = 0
+
 
 
 for i in range(0,10):
@@ -253,11 +255,12 @@ def update_screen():
 
 def game_logic():
     global game_over
-    global bullet_y, bullet_x, bullet_angle, score, victory
+    global bullet_y, bullet_x, bullet_angle, score, victory, victory_time
 
     # Check for victory condition
     if score >= 10:
         victory = True
+        victory_time = pygame.time.get_ticks() + 5000  
         return
 
     for i in range(0,no_asteroids):
@@ -290,20 +293,34 @@ def update_screen():
 
 while True: 
     draw(window)
+    current_time = pygame.time.get_ticks()
+
     if not game_over and not victory:
         handle_input()
         game_logic() 
         update_bullets()
+    elif victory and current_time > victory_time:
+        victory = False
+        # Reset the game
+        ship_x = WIDTH/2 - 50
+        ship_y = HEIGHT/2 - 50
+        ship_angle = 0
+        ship_speed = 0
+        bullets.clear()
+        score = 0 
+        for i in range(0, no_asteroids):
+            asteroid_x[i] = random.randint(0, WIDTH)
+            asteroid_y[i] = random.randint(0, HEIGHT)
+            asteroid_angle[i] = random.randint(0, 365)
     else:
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
             elif event.type == KEYDOWN:
-                if event.key == K_SPACE:
+                if event.key == K_SPACE and game_over:
                     # Reset the game
                     game_over = False
-                    victory = False
                     ship_x = WIDTH/2 - 50
                     ship_y = HEIGHT/2 - 50
                     ship_angle = 0
@@ -315,4 +332,3 @@ while True:
                         asteroid_y[i] = random.randint(0, HEIGHT)
                         asteroid_angle[i] = random.randint(0, 365)
     update_screen()
-    
