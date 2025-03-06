@@ -78,6 +78,9 @@ bullet_angle = 0
 bullets = [] # List to store active bullets
 score = 0 
 victory = False 
+ship_width = ship.get_width()
+ship_height = ship.get_height()
+
 
 for i in range(0,10):
     asteroid_x.append(random.randint(0,WIDTH))
@@ -163,7 +166,7 @@ def draw(canvas):
 # FUNCTION TO HANDLE USER (MOUSE, KEYBOARD, ETC)
 
 def handle_input():
-    global ship_is_rotating, ship_angle, ship_direction, ship_speed, ship_is_forward, ship_x, ship_y, bullet_y, bullet_x, bullet_angle
+    global ship_is_rotating, ship_angle, ship_direction, ship_speed, ship_is_forward, ship_x, ship_y, bullet_y, bullet_x, bullet_angle, ship_width, ship_height
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -178,42 +181,49 @@ def handle_input():
             elif event.key == K_UP:
                 ship_is_forward = True
                 ship_speed = 10
-
             elif event.key == K_SPACE:
                 ship_center_x = ship_x + ship.get_width() / 2
                 ship_center_y = ship_y + ship.get_height() / 2
-                bullet_offset = 20  # Adjust this value to position the bullet in front of the ship
+                bullet_offset = 20
                 bullets.append({
                     "x": ship_center_x + math.cos(math.radians(ship_angle)) * bullet_offset,
                     "y": ship_center_y - math.sin(math.radians(ship_angle)) * bullet_offset,
                     "angle": ship_angle,
                     "speed": 10
                 })
-
-    
-            print(f" x {bullet_x} y {bullet_y} ")
-
-        elif event.type== KEYUP:
+        elif event.type == KEYUP:
             if event.key == K_LEFT or event.key == K_RIGHT:
                 ship_is_rotating = False 
-            else: 
-                ship_is_forward = False 
-        
-      
-            
+            elif event.key == K_UP:
+                ship_is_forward = False
 
     if ship_is_rotating:
-        if ship_direction == 0: 
-            ship_angle = ship_angle - 10 
-        else: 
-            ship_angle = ship_angle + 10
-
+        if ship_direction == 0:
+            ship_angle -= 10
+        else:
+            ship_angle += 10
 
     if ship_is_forward or ship_speed > 0:
-        ship_x = (ship_x + math.cos(math.radians(ship_angle)) * ship_speed)
-        ship_y = (ship_y + -math.sin(math.radians(ship_angle)) * ship_speed)
-        if ship_is_forward == False: 
-            ship_speed = ship_speed - 0.2
+        new_x = ship_x + math.cos(math.radians(ship_angle)) * ship_speed
+        new_y = ship_y - math.sin(math.radians(ship_angle)) * ship_speed
+        
+        ship_width = ship.get_width()
+        ship_height = ship.get_height()
+        
+        if 0 <= new_x <= WIDTH - ship_width:
+            ship_x = new_x
+        if 0 <= new_y <= HEIGHT - ship_height:
+            ship_y = new_y
+        
+        if not ship_is_forward:
+            ship_speed = max(0, ship_speed - 0.2)
+
+    # Ensure the ship stays within the canvas
+    ship_x = max(0, min(ship_x, WIDTH - ship_width))
+    ship_y = max(0, min(ship_y, HEIGHT - ship_height))
+
+
+
 
     
 # FUNCTION TO UPDATE BULLETS POSITION
