@@ -3,7 +3,7 @@
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-yellow.svg)](https://www.python.org/)
 [![Pygame 2.0+](https://img.shields.io/badge/Pygame-2.0+-red.svg)](https://www.pygame.org/)
 
-A modern twist on the classic arcade space shooter! Navigate through asteroid fields, blast space rocks, and survive as long as possible in this Pygame-powered adventure!
+A modern twist on the classic arcade space shooter! Navigate through asteroid fields, blast space rocks, and survive as long as possible in this Pygame-powered adventure!!!
 
 ![Gameplay Screenshot](https://github.com/Ornella-Gigante/PySpaceShooter/blob/main/image_game.png) 
 
