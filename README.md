@@ -16,7 +16,7 @@ A modern twist on the classic arcade space shooter! Navigate through asteroid fi
 - 🎮 Classic arcade-style controls
 - ☄️ Random asteroid generation/movement
 
-## 🎯 How to Play
+## 🎯 How to Playy
     
         Controls:
         ← → : Rotate spaceship
